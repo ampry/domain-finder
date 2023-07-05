@@ -7,7 +7,8 @@ const wordArray = ["veteran", "disability", "cameron"];
 async function fetchData() {
   try {
     const response = await fetch(
-      "https://www.namejet.com/download/PreRelease.txt"
+      // "https://www.namejet.com/download/PreRelease.txt"
+      "https://www.namejet.com/file_dl.sn?file=deletinglist.csv"
     );
     if (response.ok) {
       const data = await response.text();
