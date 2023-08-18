@@ -1,3 +1,6 @@
 node_modules
 /node_modules
 .env
+domain_data.csv
+dropcatch.csv
+*.csv
