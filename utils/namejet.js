@@ -25,7 +25,7 @@ const namejet = async () => {
     const downloadButton =
       "#list-subscribe > div:nth-child(1) > div > div:nth-child(2) > p > a:nth-child(1)";
 
-    await page.waitForSelector(downloadButton);
+    // await page.waitForSelector(downloadButton);
     await sleep(2000);
     await page.click(downloadButton);
     await sleep(2000);
