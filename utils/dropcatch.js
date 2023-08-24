@@ -18,7 +18,10 @@ function getCurrentDateFormatted() {
 }
 
 const dropcatch = async () => {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-gpu"],
+  });
   const page = await browser.newPage();
   const client = await page.target().createCDPSession();
   await client.send("Page.setDownloadBehavior", {

@@ -5,7 +5,10 @@ function sleep(ms) {
 }
 
 const namejet = async () => {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({
+    headless: false,
+    args: ["--no-sandbox", "--disable-gpu"],
+  });
   const page = await browser.newPage();
   const client = await page.target().createCDPSession();
   await client.send("Page.setDownloadBehavior", {
