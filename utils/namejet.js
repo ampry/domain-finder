@@ -44,7 +44,7 @@
 // export default namejet;
 
 import fetch from "node-fetch";
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 
 const namejet = async () => {
@@ -53,8 +53,8 @@ const namejet = async () => {
   const csvDirectory = path.join(__dirname, "csv");
   const csvFilePath = path.join(csvDirectory, "data.csv");
 
-  if (!fs.existsSync(csvDirectory)) {
-    fs.mkdirSync(csvDirectory);
+  if (!(await fs.stat(csvDirectory).catch(() => false))) {
+    await fs.mkdir(csvDirectory);
   }
 
   const headers = {
@@ -75,18 +75,34 @@ const namejet = async () => {
     "Referrer-Policy": "strict-origin-when-cross-origin",
   };
 
-  fetch("https://www.namejet.com/file_dl.sn?file=preorderstarting1.csv", {
-    headers,
-    method: "GET",
-  })
-    .then((response) => response.text())
-    .then((data) => {
-      fs.writeFileSync(csvFilePath, data, "utf-8");
-      console.log("CSV file saved successfully.");
-    })
-    .catch((error) => {
-      console.error("Error fetching or saving the CSV file:", error);
-    });
+  try {
+    const response = await fetch(
+      "https://www.namejet.com/file_dl.sn?file=preorderstarting1.csv",
+      {
+        headers,
+        method: "GET",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch the CSV file. Status: ${response.status} ${response.statusText}`
+      );
+    }
+
+    const csvData = await response.text();
+    await fs.writeFile(csvFilePath, csvData, "utf-8");
+    console.log("CSV file saved successfully.");
+
+    // Log the first few lines of the file
+    const lines = csvData.split("\n");
+    const numLinesToLog = 5;
+    const firstFewLines = lines.slice(0, numLinesToLog);
+    console.log("First few lines of the CSV file:");
+    console.log(firstFewLines.join("\n"));
+  } catch (error) {
+    console.error("Error fetching or saving the CSV file:", error);
+  }
 };
 
 export default namejet;
