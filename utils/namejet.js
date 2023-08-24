@@ -7,7 +7,6 @@ function sleep(ms) {
 const namejet = async () => {
   const browser = await puppeteer.launch({
     headless: false,
-    args: ["--no-sandbox", "--disable-gpu"],
   });
   const page = await browser.newPage();
   const client = await page.target().createCDPSession();
@@ -21,16 +20,18 @@ const namejet = async () => {
       waitUntil: "networkidle0",
     });
 
+    sleep(5000);
+
     const downloadButton =
       "#list-subscribe > div:nth-child(1) > div > div:nth-child(2) > p > a:nth-child(1)";
 
-    // await page.waitForSelector(downloadButton);
+    await page.waitForSelector(downloadButton);
     await sleep(2000);
     await page.click(downloadButton);
     await sleep(2000);
     console.log("Download button clicked");
 
-    await sleep(5000);
+    await sleep(10000);
 
     console.log("File downloaded successfully");
   } catch (error) {

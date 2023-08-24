@@ -7,10 +7,10 @@ function sleep(ms) {
 }
 
 (async () => {
-  sleep(1000);
-  await dropcatch();
+  // sleep(1000);
+  // await dropcatch();
   sleep(1000);
   await namejet();
-  sleep(1000);
-  await godaddy();
+  // sleep(1000);
+  // await godaddy();
 })();
