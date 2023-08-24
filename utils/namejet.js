@@ -1,34 +1,3 @@
-// import fetch from "node-fetch";
-// import fs from "fs";
-
-// const url = "https://www.namejet.com/file_dl.sn?file=preorderstarting1.csv";
-
-// async function fetchAndSaveNameJetCSV() {
-//   try {
-//     const response = await fetch(url, {
-//       method: "GET",
-//       headers: {
-//         "User-Agent":
-//           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
-//         Referer: "https://www.namejet.com/",
-//       },
-//     });
-
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`);
-//     }
-
-//     const csvData = await response.text();
-
-//     fs.writeFileSync("namejet_data.csv", csvData, "utf-8");
-//     console.log("CSV data saved to namejet_data.csv");
-//   } catch (error) {
-//     console.error("An error occurred:", error);
-//   }
-// }
-
-// fetchAndSaveNameJetCSV();
-
 import puppeteer from "puppeteer";
 
 function sleep(ms) {
