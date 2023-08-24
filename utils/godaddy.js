@@ -28,7 +28,7 @@ const headers = {
   "x-gdfindam-reqid": "9984fa6f-60bf-4260-8e0e-0c9dc975e1d0",
 };
 
-async function fetchAndSaveCSV() {
+const godaddy = async () => {
   try {
     const response = await fetch(url, {
       headers,
@@ -51,6 +51,6 @@ async function fetchAndSaveCSV() {
   } catch (error) {
     console.error("An error occurred:", error);
   }
-}
+};
 
-fetchAndSaveCSV();
+export default godaddy;

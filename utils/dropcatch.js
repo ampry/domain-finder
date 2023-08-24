@@ -17,7 +17,7 @@ function getCurrentDateFormatted() {
   return `${year}-${month}-${day}`;
 }
 
-(async () => {
+const dropcatch = async () => {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   const client = await page.target().createCDPSession();
@@ -98,4 +98,6 @@ function getCurrentDateFormatted() {
         console.error("Error extracting zip:", error);
       });
   });
-})();
+};
+
+export default dropcatch;

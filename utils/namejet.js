@@ -4,7 +4,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-(async () => {
+const namejet = async () => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
   const client = await page.target().createCDPSession();
@@ -35,4 +35,6 @@ function sleep(ms) {
   } finally {
     await browser.close();
   }
-})();
+};
+
+export default namejet;
