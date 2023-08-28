@@ -42,11 +42,7 @@ const godaddy = async () => {
 
     const csvData = await response.text();
 
-    fs.writeFileSync(
-      `csv/godaddy-auction-${formattedDate}.csv`,
-      csvData,
-      "utf-8"
-    );
+    fs.writeFileSync(`csv/godaddy.csv`, csvData, "utf-8");
     console.log("Go daddy CSV data saved.");
   } catch (error) {
     console.error("An error occurred:", error);

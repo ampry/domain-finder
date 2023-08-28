@@ -89,7 +89,7 @@ const dropcatch = async () => {
         // Extract each file
         Object.keys(zip.files).forEach((filename) => {
           const fileData = zip.files[filename].async("nodebuffer");
-          const targetFilePath = path.join(targetDirectory, filename);
+          const targetFilePath = path.join(targetDirectory, "dropcatch.csv");
 
           fileData.then((data) => {
             fs.writeFileSync(targetFilePath, data);

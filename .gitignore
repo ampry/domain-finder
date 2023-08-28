@@ -8,3 +8,6 @@ downloads
 /downloads
 csv
 .DS_Store
+Data Clean.ipynb
+combined_csv.csv
+.ipynb_checkpoints
