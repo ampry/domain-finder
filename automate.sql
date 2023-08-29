@@ -1,8 +1,8 @@
-TRUNCATE TABLE your_table_name;
+TRUNCATE TABLE domain;
 
 -- Load new data into the table from a CSV file
-LOAD DATA LOCAL INFILE '/path/to/your/file.csv'
-INTO TABLE your_table_name
+LOAD DATA LOCAL INFILE '/Users/cameron/Projects/domain-finder/domains.csv'
+INTO TABLE domain
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'

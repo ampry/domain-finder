@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Run Node.js script
-node /path/to/your/node_script.js
+node index.js
 
 # Check if Node.js script succeeded
 if [ $? -eq 0 ]; then
   # Run Python script
-  python3 /path/to/your/python_script.py
+  python3 data_clean.py
 else
   echo "Node.js script failed."
   exit 1
@@ -15,7 +15,7 @@ fi
 # Check if Python script succeeded
 if [ $? -eq 0 ]; then
   # Run MySQL script
-  mysql -u your_username -pyour_password your_database < /path/to/your/sql_script.sql
+  mysql -u root -p your_password your_database < automate.sql
 else
   echo "Python script failed."
   exit 1
